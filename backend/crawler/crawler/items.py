@@ -10,5 +10,5 @@ class PropertyItem(scrapy.Item):
     name = scrapy.Field()
     locality = scrapy.Field()
     price = scrapy.Field()
-    # TODO: url
-    # TODO: image_url
+    url = scrapy.Field()
+    image_url = scrapy.Field()

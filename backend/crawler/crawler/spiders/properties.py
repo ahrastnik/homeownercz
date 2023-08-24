@@ -20,10 +20,13 @@ class PropertySpider(scrapy.Spider):
 
     def parse(self, response):
         for prop in response.css('div.property'):
-            property_item = PropertyItem()
-            property_item['name'] = prop.css('span.name::text').get()
-            property_item['locality'] = prop.css('span.locality::text').get()
-            property_item['price'] = prop.css('span.norm-price::text').get()
+            property_item = PropertyItem({
+                'name': prop.css('span.name::text').get(),
+                'locality': prop.css('span.locality::text').get(),
+                'price': prop.css('span.norm-price::text').get(),
+                'url': prop.css('a.title::attr(href)').get(),
+                'image_url': '',
+            })
             yield property_item
     
     async def error_callback(self, failure):

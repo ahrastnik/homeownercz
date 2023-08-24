@@ -1,0 +1,27 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django
+db.sqlite3
+media/
+static/
+
+# VS Code
+.vscode/
+
+# Dev
+data/
+
+# Logs
+gunicorn/logs/*
+
+# Virtual environments
+.venv/
+
+# Django Environment config
+backend/backend/envs/env.*.json
+
+# Keep directory placeholders
+!.gitkeep

@@ -39,12 +39,13 @@ class PropertySpider(scrapy.Spider):
         for prop in response.css('div.property'):
             if self.has_reached_scrape_limit():
                 return
+            
             property_item = PropertyItem({
                 'name': prop.css('span.name::text').get(),
                 'locality': prop.css('span.locality::text').get(),
                 'price': prop.css('span.norm-price::text').get(),
                 'url': prop.css('a.title::attr(href)').get(),
-                'image_url': '',
+                'image_url': prop.css('a._2vc3VMce92XEJFrv8_jaeN img::attr(src)').get(),
             })
             self.crawler.stats.inc_value('properties/scraped_count')
             yield property_item

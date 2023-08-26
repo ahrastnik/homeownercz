@@ -2,8 +2,11 @@ version: "3.7"
 
 services:
   backend:
-    # env_file:
-    #   - .env
+    env_file:
+      - envs/.django.env
+    environment:
+      - DJANGO_DB_ENGINE=django.db.backends.sqlite3
+      - DJANGO_DEBUG=True
     build: .
     ports:
       - "8080:8080"

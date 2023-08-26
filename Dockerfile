@@ -14,12 +14,11 @@ RUN playwright install --with-deps chromium
 # Setup Django Environment
 COPY ./backend /project
 WORKDIR /project
-RUN python manage.py migrate --no-input \
-&&  python manage.py collectstatic --no-input
 
 # Configure supervisor
 COPY supervisord.conf /etc/supervisor/supervisord.conf
 # Setup a cron job for crawling
 RUN crontab -l | { cat; echo "* * * * * /usr/local/bin/python /project/manage.py scrapy > /var/log/crawler.log 2>&1"; } | crontab -
 # Run supervisor which will control both Django and crawling
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+COPY ./entrypoint.sh /
+ENTRYPOINT ["sh", "/entrypoint.sh"]

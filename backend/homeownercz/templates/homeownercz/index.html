@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homeowner.cz</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'homeownercz/css/styles.css' %}" />
+</head>
+<body>
+    <div class="title">
+        <h1><u>Homeowner.cz</u></h1>
+        <h2>Welcome, your future home awaits you!</h2>
+    </div>
+    <p class="counter">
+        Found <span>{{ property_list.count }}</span> apartments for sale:
+    </p>
+    <div class="property-list">
+        {% for property in property_list %}
+        <div class="property">
+            <a href="{{ property.url }}" target="_blank">
+                <img src="{{ property.image_url }}" alt="{{ property.name }}">
+            </a>
+            <div>
+                <h4><a href="{{ property.url }}" target="_blank">{{ property.name }}</a></h4>
+                <p>{{ property.locality }}<br><span>{{ property.price }}</span></p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -44,7 +44,7 @@ class PropertySpider(scrapy.Spider):
                 'name': prop.css('span.name::text').get(),
                 'locality': prop.css('span.locality::text').get(),
                 'price': prop.css('span.norm-price::text').get(),
-                'url': prop.css('a.title::attr(href)').get(),
+                'url': urljoin(self.domain, prop.css('a.title::attr(href)').get()),
                 'image_url': prop.css('a._2vc3VMce92XEJFrv8_jaeN img::attr(src)').get(),
             })
             self.crawler.stats.inc_value('properties/scraped_count')

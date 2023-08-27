@@ -10,7 +10,7 @@ loglevel = "debug"
 workers = cpu_count() * 2 + 1
 #threads = 4 # TODO: Figure out the best thread/worker ratio
 # The socket to bind
-bind = "0.0.0.0:8080"
+bind = "0.0.0.0:8000"
 # Restart workers when code changes (development only!)
 reload = True
 # PID file so you can easily fetch process ID

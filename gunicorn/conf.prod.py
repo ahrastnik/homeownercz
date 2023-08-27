@@ -8,7 +8,7 @@ loglevel = "info"
 # The number of worker processes & threads for handling requests
 workers = cpu_count() * 2 + 1
 # The socket to bind
-bind = "0.0.0.0:8080"
+bind = "0.0.0.0:8000"
 # Disable restarts on code changes
 reload = False
 # Write access and error info to /var/log

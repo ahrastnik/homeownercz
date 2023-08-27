@@ -10,7 +10,7 @@ services:
       - GUNICORN_CONF=conf.py
     build: .
     ports:
-      - "8080:8080"
+      - "8000:8000"
     volumes:
       - ./backend/database:/project/database
       - static:/static
@@ -21,6 +21,7 @@ services:
       - static:/static
     ports:
       - "80:80"
+      - "8080:8080"
     depends_on:
       - backend
 

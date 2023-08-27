@@ -22,8 +22,6 @@ RUN mkdir -p /var/log/gunicorn \
 
 # Configure supervisor
 COPY supervisord.conf /etc/supervisor/supervisord.conf
-# Setup a cron job for crawling
-RUN crontab -l | { cat; echo "* * * * * /usr/local/bin/python /project/manage.py scrapy > /var/log/crawler.log 2>&1"; } | crontab -
 # Run supervisor which will control both Django and crawling
 COPY ./entrypoint.sh /
 ENTRYPOINT ["sh", "/entrypoint.sh"]

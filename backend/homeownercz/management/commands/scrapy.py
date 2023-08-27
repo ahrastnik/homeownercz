@@ -9,5 +9,5 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         # Run the Scrapy property crawler once
         process = CrawlerProcess(get_project_settings())
-        process.crawl('property', scrape_limit=15)
+        process.crawl('property', scrape_limit=500)
         process.start()

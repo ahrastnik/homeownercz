@@ -7,6 +7,7 @@ services:
     environment:
       - DJANGO_DB_ENGINE=django.db.backends.sqlite3
       - DJANGO_DEBUG=True
+      - GUNICORN_CONF=conf.py
     build: .
     ports:
       - "8080:8080"

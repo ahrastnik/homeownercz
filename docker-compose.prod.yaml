@@ -17,7 +17,8 @@ services:
       - envs/.django.env
     environment:
       - DJANGO_DB_ENGINE=django.db.backends.postgresql
-      - DJANGO_DEBUG=True
+      - DJANGO_DEBUG=False
+      - GUNICORN_CONF=conf.prod.py
     ports:
       - "8080:8080"
     volumes:

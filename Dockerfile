@@ -15,6 +15,11 @@ RUN playwright install --with-deps chromium
 COPY ./backend /project
 WORKDIR /project
 
+# Setup Gunicorn environment
+COPY ./gunicorn /project/gunicorn
+RUN mkdir -p /var/log/gunicorn \
+&&  mkdir -p /var/run/gunicorn
+
 # Configure supervisor
 COPY supervisord.conf /etc/supervisor/supervisord.conf
 # Setup a cron job for crawling

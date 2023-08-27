@@ -80,6 +80,10 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # TODO: Load different settings based on environment
 # NOTE: If-else or loading the 'ENGINE' setting with os.environ doesn't work in Django 4.2
 DATABASES = {
+    # "default": {
+    #     "ENGINE": "django.db.backends.sqlite3",
+    #     "NAME": BASE_DIR / "database" / "db.sqlite3",
+    # }
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get('POSTGRES_NAME'),
